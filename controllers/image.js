@@ -3,7 +3,7 @@ const { response } = require('express')
 
 // clarifai api is only needed in this route
 const SetupClarifai = (imageurl) => {
-    const PAT = 'b381d108b08d4b67808ca3002143ad7a'
+    const PAT = process.env.API_KEY
     const USER_ID = 'lfhuehuixil0'
     const APP_ID = 'my-first-application-6auc6'
     const MODEL_ID = 'face-detection'
@@ -54,6 +54,7 @@ const handleApiCall = (req,res) => {
         res.json(data)})
     .catch(err=> res.status(400).json('Unable to work with API'))
 }
+
 const handleImage = (req,res,postgres)=>{
     // /image path ma put request auda bitikai tyo userko entries ek le badhni vayo, sathma userko id pathauni
     // yo userle kati ota image submit garexata, id chaiyo , url ma navaera request body ma id dinxam yeha chai 
